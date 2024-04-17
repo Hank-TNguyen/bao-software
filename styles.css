@@ -176,10 +176,6 @@ body:hover header {
     padding: 20px; /* Add some padding around the modal content */
 }
 
-#image-story {
-    width: 40%
-}
-
 .modal-content {
     display: flex;
     flex-direction: column; /* Default to column, JavaScript will adjust */
@@ -237,7 +233,26 @@ body:hover header {
 
 .modal-content.portrait img,
 .modal-content.portrait #image-story {
-    max-width: 50%; /* Each takes up to half of the modal-content width */
+    max-width: 30%; /* Each takes up to half of the modal-content width */
+}
+
+/* Ensure the collage is responsive and adjusts to screen size */
+@media (max-width: 768px) {
+    #image-story {
+        width: auto
+    }
+
+    /* Portrait orientation styles */
+    .modal-content.portrait {
+        flex-direction: column; /* Place image and text side by side */
+        gap: 1px;
+    }
+
+    .modal-content.portrait img,
+    .modal-content.portrait #image-story {
+        max-width: 100%; /* Each takes up to half of the modal-content width */
+    }
+
 }
 
 /* Close button */
@@ -329,7 +344,9 @@ body:hover header {
     flex-direction: row;
     justify-content: center;
     gap: 10px;
-    text-align: center; /* Center text by default for smaller screens */
+    margin: 0 auto; /* Center the intro section */
+    max-width: 800px; /* Set a max-width to prevent the section from getting too wide */
+    padding: 20px; /* Add padding for spacing */
 }
 
 .intro-me,
@@ -346,10 +363,15 @@ body:hover header {
     text-align: left; /* Left-align text for the 'You' section */
 }
 
-/* Optional: Add a media query for smaller screens where text aligns to the center */
+/* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
+    .intro {
+        flex-direction: column; /* Stack children vertically */
+    }
+
     .intro-me,
     .intro-you {
-        text-align: center;
+        text-align: center; /* Center-align text for better readability on small screens */
+        padding: 10px 0; /* Adjust padding for a tighter layout */
     }
 }
